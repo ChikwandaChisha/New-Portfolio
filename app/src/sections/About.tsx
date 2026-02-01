@@ -61,6 +61,34 @@ export function About() {
             ease: 'easeInOut',
           }}
         />
+        <motion.div
+          className="absolute top-40 right-20 w-10 h-10 border border-cyan/10"
+          animate={{
+            y: [0, -30, 0],
+            rotate: [0, 90, 180],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 1,
+          }}
+        />
+        <motion.div
+          className="absolute bottom-40 left-20 w-14 h-14 rounded-lg border border-cyan/5 rotate-12"
+          animate={{
+            y: [0, 30, 0],
+            rotate: [12, -45, 12],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 2,
+          }}
+        />
 
         {/* Gradient orbs */}
         <motion.div
@@ -100,7 +128,7 @@ export function About() {
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src="/profile.jpg"
+                  src="/about-profile.jpg"
                   alt="Chikwanda Chisha"
                   className="w-full h-full object-cover"
                 />
@@ -173,7 +201,7 @@ export function About() {
                     <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-cyan" />Dartmouth Honor List</li>
                     <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-cyan" />EE Just STEM Fellow</li>
                     <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-cyan" />$13k EE Just Research Fund</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-cyan" />Post-Quant Scholarship</li>
+                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-cyan" />First Quantum Mine (FQM) Scholarship</li>
                   </ul>
                 </div>
 

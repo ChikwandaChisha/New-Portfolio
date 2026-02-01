@@ -151,12 +151,7 @@ export function Hero() {
                           }
                         }
                       }}
-                      whileHover={{
-                        scale: 1.2,
-                        rotate: Math.random() * 10 - 5,
-                        textShadow: "0 0 8px rgba(0, 212, 255, 0.5)",
-                        transition: { duration: 0.2 }
-                      }}
+
                     >
                       {char}
                     </motion.span>

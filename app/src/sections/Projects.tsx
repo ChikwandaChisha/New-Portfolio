@@ -187,6 +187,34 @@ export function Projects() {
           }}
         />
         <motion.div
+          className="absolute top-1/4 left-1/4 w-8 h-8 border border-cyan/10"
+          animate={{
+            y: [0, -40, 0],
+            rotate: [0, 180, 360],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 1,
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-16 h-16 border border-cyan/5 rounded-xl rotate-12"
+          animate={{
+            y: [0, 30, 0],
+            rotate: [12, 60, 12],
+            scale: [0.9, 1.1, 0.9],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 3,
+          }}
+        />
+        <motion.div
           className="absolute bottom-20 right-20 w-8 h-8 rounded-full border border-cyan/10"
           animate={{
             scale: [1, 1.5, 1],
