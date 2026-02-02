@@ -23,7 +23,7 @@ const projects = [
     tech: ['Python', 'PyTorch', 'Hugging Face', 'Scikit-learn'],
     github: null,
     demo: null,
-    color: 'from-purple-500/20 to-pink-500/20',
+    color: 'from-cyan/20 to-blue-500/20',
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const projects = [
     tech: ['React Native', 'Expo', 'Python', 'OAuth 2.0'],
     github: null,
     demo: null,
-    color: 'from-orange-500/20 to-red-500/20',
+    color: 'from-cyan/20 to-blue-500/20',
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const projects = [
     tech: ['C++', 'Multi-threading', 'Inverted Indexing', 'Algorithms'],
     github: null,
     demo: null,
-    color: 'from-emerald-500/20 to-green-500/20',
+    color: 'from-cyan/20 to-blue-500/20',
   },
 ];
 
