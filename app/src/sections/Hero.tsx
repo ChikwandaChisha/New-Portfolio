@@ -117,48 +117,7 @@ export function Hero() {
           <p className="text-white/60 text-lg sm:text-xl mb-2">Hello, I'm</p>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
             <span className="sr-only">Chikwanda Chisha</span>
-            <motion.div
-              className="flex flex-wrap justify-center gap-x-[0.2em] gap-y-2"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1,
-                    delayChildren: 0.5,
-                  }
-                }
-              }}
-            >
-              {"Chikwanda Chisha".split(" ").map((word, i) => (
-                <span key={i} className="inline-block whitespace-nowrap">
-                  {word.split("").map((char, j) => (
-                    <motion.span
-                      key={j}
-                      className="inline-block text-gradient"
-                      variants={{
-                        hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
-                        visible: {
-                          opacity: 1,
-                          y: 0,
-                          filter: 'blur(0px)',
-                          transition: {
-                            type: "spring",
-                            damping: 12,
-                            stiffness: 100
-                          }
-                        }
-                      }}
-
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                </span>
-              ))}
-            </motion.div>
+            <span className="inline-block text-gradient-silver">Chikwanda Chisha</span>
           </h1>
         </motion.div>
 

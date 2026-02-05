@@ -35,13 +35,13 @@ export function AnimatedBackground() {
 
     const createStars = () => {
       // High density: divisor 1000 = ~2000 stars on 1080p
-      const starCount = Math.floor(window.innerWidth * window.innerHeight / 8000);
+      const starCount = Math.floor(window.innerWidth * window.innerHeight / 6000);
       stars = [];
       for (let i = 0; i < starCount; i++) {
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.8, // Speed kept as requested
+          vx: (Math.random() - 0.5) * 0.8,
           vy: (Math.random() - 0.5) * 0.8,
           size: Math.random() * 1.5 + 0.5,
           baseOpacity: Math.random() * 0.8 + 0.2,
