@@ -56,7 +56,7 @@ export function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        className={`fixed left-0 right-0 z-50 flex justify-center transition-all duration-300 ${isScrolled ? 'top-4' : 'top-6'
+        className={`fixed left-0 right-0 z-50 flex justify-start md:justify-center px-4 md:px-0 transition-all duration-300 ${isScrolled ? 'top-4' : 'top-6'
           }`}
       >
         <div className="glass border border-border/50 rounded-full px-3 py-2 hidden md:flex items-center gap-1">
@@ -110,7 +110,7 @@ export function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="flex flex-col items-center justify-center h-full gap-6"
+              className="flex flex-col items-start justify-center h-full gap-6 px-8"
             >
               {navLinks.map((link, index) => (
                 <motion.a
