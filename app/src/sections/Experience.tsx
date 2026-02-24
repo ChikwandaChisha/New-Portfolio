@@ -133,116 +133,11 @@ function ExperienceCard({ experience }: { experience: typeof experiences[0] }) {
 export function Experience() {
   return (
     <section id="experience" className="py-24 sm:py-32 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Pulsing gradient orbs */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%)',
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(0, 212, 255, 0.04) 0%, transparent 70%)',
-          }}
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.4, 0.7, 0.4],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
-        />
 
-        {/* Floating code symbols */}
-        <motion.div
-          className="absolute top-20 right-20 text-cyan/10 text-6xl font-mono"
-          animate={{
-            y: [0, -15, 0],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        >
-          {'</>'}
-        </motion.div>
-        <motion.div
-          className="absolute bottom-32 left-20 text-cyan/10 text-5xl font-mono"
-          animate={{
-            y: [0, 15, 0],
-            opacity: [0.1, 0.25, 0.1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
-          }}
-        >
-          {'{}'}
-        </motion.div>
-
-        {/* Animated connection lines */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.03]">
-          <motion.line
-            x1="10%"
-            y1="20%"
-            x2="30%"
-            y2="60%"
-            stroke="rgba(0, 212, 255, 0.5)"
-            strokeWidth="1"
-            animate={{
-              strokeOpacity: [0.1, 0.5, 0.1],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-          <motion.line
-            x1="70%"
-            y1="30%"
-            x2="90%"
-            y2="70%"
-            stroke="rgba(0, 212, 255, 0.5)"
-            strokeWidth="1"
-            animate={{
-              strokeOpacity: [0.1, 0.5, 0.1],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: 1,
-            }}
-          />
-        </svg>
-      </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
-          <p className="text-cyan text-sm font-medium uppercase tracking-widest mb-4">
-            Explore My
-          </p>
           <h2 className="text-4xl sm:text-5xl font-bold text-white">Experience</h2>
         </ScrollReveal>
 

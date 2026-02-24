@@ -58,50 +58,39 @@ export function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${isScrolled ? 'top-4' : 'top-6'
+        className={`fixed left-0 right-0 z-50 flex justify-center transition-all duration-300 ${isScrolled ? 'top-4' : 'top-6'
           }`}
       >
-        <div className="glass border border-border/50 rounded-full px-2 py-2 flex items-center gap-1">
-          {/* Logo */}
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="w-10 h-10 rounded-full bg-cyan/10 border border-cyan/30 flex items-center justify-center text-cyan font-semibold text-sm hover:bg-cyan/20 transition-colors"
-          >
-            CC
-          </a>
+        <div className="glass border border-border/50 rounded-full px-3 py-2 hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <motion.a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className={`relative px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${activeSection === link.href.slice(1)
+                ? 'text-black'
+                : 'text-white/70 hover:text-white hover:bg-white/10'
+                }`}
+            >
+              {activeSection === link.href.slice(1) && (
+                <motion.div
+                  layoutId="activeNav"
+                  className="absolute inset-0 bg-cyan rounded-full shadow-[0_0_15px_rgba(0,212,255,0.4)]"
+                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className="relative z-10">{link.name}</span>
+            </motion.a>
+          ))}
+        </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${activeSection === link.href.slice(1)
-                    ? 'text-black'
-                    : 'text-white/70 hover:text-white'
-                  }`}
-              >
-                {activeSection === link.href.slice(1) && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute inset-0 bg-cyan rounded-full"
-                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                <span className="relative z-10">{link.name}</span>
-              </a>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
+        {/* Mobile Menu Button */}
+        <div className="glass border border-border/50 rounded-full px-2 py-2 md:hidden flex items-center">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+            className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors"
           >
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>

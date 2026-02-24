@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/StaggerContainer';
-import { ExternalLink, Github, Lock, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, Lock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const projects = [
@@ -181,123 +181,11 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 export function Projects() {
   return (
     <section id="projects" className="py-24 sm:py-32 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Floating geometric shapes */}
-        <motion.div
-          className="absolute top-10 left-10 w-12 h-12 border border-cyan/10 rotate-45"
-          animate={{
-            rotate: [45, 135, 45],
-            y: [0, 20, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-8 h-8 border border-cyan/10"
-          animate={{
-            y: [0, -40, 0],
-            rotate: [0, 180, 360],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-1/4 w-16 h-16 border border-cyan/5 rounded-xl rotate-12"
-          animate={{
-            y: [0, 30, 0],
-            rotate: [12, 60, 12],
-            scale: [0.9, 1.1, 0.9],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 3,
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-20 w-8 h-8 rounded-full border border-cyan/10"
-          animate={{
-            scale: [1, 1.5, 1],
-            y: [0, -15, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
-        />
 
-        {/* Pulsing orbs */}
-        <motion.div
-          className="absolute top-1/3 right-1/3 w-72 h-72 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(0, 212, 255, 0.04) 0%, transparent 70%)',
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-
-        {/* Animated grid dots */}
-        <div className="absolute inset-0 opacity-[0.02]">
-          {[...Array(30)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full bg-cyan"
-              style={{
-                left: `${(i % 6) * 16 + 8}%`,
-                top: `${Math.floor(i / 6) * 20 + 10}%`,
-              }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: 2 + Math.random() * 2,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: Math.random() * 3,
-              }}
-            />
-          ))}
-        </div>
-      </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
-          <motion.p
-            className="text-cyan text-sm font-medium uppercase tracking-widest mb-4 flex items-center justify-center gap-2"
-            animate={{
-              opacity: [0.7, 1, 0.7],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
-            <Sparkles size={14} />
-            Browse My Recent
-            <Sparkles size={14} />
-          </motion.p>
           <h2 className="text-4xl sm:text-5xl font-bold text-white">Projects</h2>
         </ScrollReveal>
 

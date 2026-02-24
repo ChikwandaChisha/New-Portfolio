@@ -128,7 +128,7 @@ export function About() {
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src="/about-profile.jpg"
+                  src="/profile-new.jpg"
                   alt="Chikwanda Chisha"
                   className="w-full h-full object-cover"
                 />
