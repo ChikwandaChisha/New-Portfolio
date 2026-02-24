@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 sm:py-32 relative overflow-hidden">
+    <section id="contact" className="py-24 sm:py-32 relative overflow-hidden section-fade">
 
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

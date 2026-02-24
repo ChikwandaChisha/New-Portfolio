@@ -33,7 +33,7 @@ function CountUp({ end, duration = 2 }: { end: number; duration?: number }) {
 
 export function About() {
   return (
-    <section id="about" className="py-24 sm:py-32 relative overflow-hidden">
+    <section id="about" className="py-24 sm:py-32 relative overflow-hidden section-fade">
       {/* Animated background elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Floating shapes */}

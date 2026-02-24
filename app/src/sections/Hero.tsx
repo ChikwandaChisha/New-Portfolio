@@ -1,6 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { Briefcase, Mail, ChevronDown, Linkedin, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { smoothScrollTo } from '@/utils/smoothScroll';
 
 export function Hero() {
   const containerVariants: Variants = {
@@ -54,7 +55,7 @@ export function Hero() {
           variants={itemVariants}
           className="text-white/50 text-base sm:text-lg max-w-xl mx-auto mb-10"
         >
-          Passionate about harnessing technology to tackle real-world challenges
+          I love to think, code and cook.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -69,7 +70,7 @@ export function Hero() {
             <Button
               size="lg"
               className="bg-cyan hover:bg-cyan-dark text-black font-semibold rounded-full px-8 py-6 text-base transition-all duration-300 hover:shadow-glow"
-              onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => smoothScrollTo('#projects', 900, 60)}
             >
               <Briefcase size={18} className="mr-2" />
               View My Work
@@ -83,7 +84,7 @@ export function Hero() {
               size="lg"
               variant="outline"
               className="border-border hover:border-cyan hover:bg-cyan/20 text-white hover:text-cyan rounded-full px-8 py-6 text-base transition-all duration-300 hover:shadow-glow"
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => smoothScrollTo('#contact', 900, 60)}
             >
               <Mail size={18} className="mr-2" />
               Contact Me
@@ -120,7 +121,7 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.button
-          onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => smoothScrollTo('#about', 900, 60)}
           className="flex flex-col items-center gap-2 text-white/40 hover:text-cyan transition-colors"
           animate={{ y: [0, 8, 0] }}
           transition={{

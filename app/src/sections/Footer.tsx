@@ -1,4 +1,5 @@
 import { Heart } from 'lucide-react';
+import { smoothScrollTo } from '@/utils/smoothScroll';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -10,10 +11,7 @@ const navLinks = [
 export function Footer() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    smoothScrollTo(href, 900, 60);
   };
 
   return (

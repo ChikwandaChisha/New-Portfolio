@@ -96,13 +96,18 @@ function SkillCard({ skill }: { skill: typeof frontendSkills[0] }) {
   );
 }
 
-function ExperienceCard({ experience }: { experience: typeof experiences[0] }) {
+function ExperienceCard({ experience, index }: { experience: typeof experiences[0]; index: number }) {
   return (
     <motion.div
       className="relative pl-8 pb-12 border-l border-white/10 last:pb-0"
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.15,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
     >
       <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-cyan shadow-[0_0_10px_rgba(0,212,255,0.5)]" />
 
@@ -132,7 +137,7 @@ function ExperienceCard({ experience }: { experience: typeof experiences[0] }) {
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 sm:py-32 relative overflow-hidden">
+    <section id="experience" className="py-24 sm:py-32 relative overflow-hidden section-fade">
 
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -151,7 +156,7 @@ export function Experience() {
 
           <div className="space-y-0">
             {experiences.map((exp, i) => (
-              <ExperienceCard key={i} experience={exp} />
+              <ExperienceCard key={i} experience={exp} index={i} />
             ))}
           </div>
         </div>

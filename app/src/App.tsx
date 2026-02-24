@@ -6,6 +6,7 @@ import { Projects } from './sections/Projects';
 import { Contact } from './sections/Contact';
 import { Footer } from './sections/Footer';
 import { AnimatedBackground } from './components/AnimatedBackground';
+import { SectionDivider } from './components/SectionDivider';
 
 function App() {
   return (
@@ -16,9 +17,13 @@ function App() {
       <Navigation />
       <main className="relative z-10">
         <Hero />
+        <SectionDivider variant="nebula" />
         <About />
+        <SectionDivider variant="glow" />
         <Projects />
+        <SectionDivider variant="nebula" />
         <Experience />
+        <SectionDivider variant="glow" />
         <Contact />
       </main>
       <Footer />

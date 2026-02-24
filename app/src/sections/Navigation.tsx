@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, User, Briefcase, FolderGit2, Mail } from 'lucide-react';
+import { smoothScrollTo } from '@/utils/smoothScroll';
 
 const navLinks = [
   { name: 'About', href: '#about', icon: User },
@@ -43,14 +44,11 @@ export function Navigation() {
     return () => observer.disconnect();
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    smoothScrollTo(href, 900, 60);
     setIsMobileMenuOpen(false);
-  };
+  }, []);
 
   return (
     <>
