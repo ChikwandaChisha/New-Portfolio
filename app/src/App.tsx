@@ -11,11 +11,16 @@ import { SectionDivider } from './components/SectionDivider';
 function App() {
   return (
     <div className="min-h-screen bg-black text-white relative">
+      {/* Skip to content link for keyboard navigation */}
+      <a href="#main-content" className="skip-to-content">
+        Skip to content
+      </a>
+
       {/* Global animated background */}
       <AnimatedBackground />
 
       <Navigation />
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10" role="main">
         <Hero />
         <SectionDivider variant="nebula" />
         <About />

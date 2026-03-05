@@ -82,7 +82,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       />
 
       {/* Project Number */}
-      <div className="absolute top-4 left-4 z-10">
+      <div className="absolute top-4 left-4 z-10" aria-hidden="true">
         <motion.span
           className="text-6xl font-bold text-white/5 group-hover:text-cyan/10 transition-colors"
           animate={{
@@ -145,10 +145,11 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`View ${project.title} source code on GitHub`}
               className="flex items-center gap-2 text-white/60 hover:text-cyan transition-colors"
               whileHover={{ x: 3 }}
             >
-              <Github size={18} />
+              <Github size={18} aria-hidden="true" />
               <span className="text-sm">Code</span>
             </motion.a>
           )}
@@ -157,15 +158,16 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`View ${project.title} live demo`}
               className="flex items-center gap-2 text-white/60 hover:text-cyan transition-colors"
               whileHover={{ x: 3 }}
             >
-              <ExternalLink size={18} />
+              <ExternalLink size={18} aria-hidden="true" />
               <span className="text-sm">Live Demo</span>
             </motion.a>
           ) : (
-            <span className="flex items-center gap-2 text-white/30 cursor-not-allowed">
-              <Lock size={18} />
+            <span className="flex items-center gap-2 text-white/50" aria-label={`${project.title} is a private project`}>
+              <Lock size={18} aria-hidden="true" />
               <span className="text-sm">Private</span>
             </span>
           )}
@@ -173,7 +175,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       </div>
 
       {/* Hover Gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} aria-hidden="true" />
     </motion.div>
   );
 }

@@ -43,8 +43,7 @@ export function Hero() {
         <motion.div variants={itemVariants} className="mb-6">
           <p className="text-white/60 text-lg sm:text-xl mb-2">Hello, I'm</p>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-            <span className="sr-only">Chikwanda Chisha</span>
-            <span className="inline-block text-gradient-silver">Chikwanda Chisha</span>
+            <span className="inline-block text-gradient-silver" aria-label="Chikwanda Chisha">Chikwanda Chisha</span>
           </h1>
         </motion.div>
 
@@ -82,8 +81,7 @@ export function Hero() {
           >
             <Button
               size="lg"
-              variant="outline"
-              className="border-border hover:border-cyan hover:bg-cyan/20 text-white hover:text-cyan rounded-full px-8 py-6 text-base transition-all duration-300 hover:shadow-glow"
+              className="bg-transparent hover:bg-cyan/20 border border-cyan/50 text-white hover:text-cyan font-semibold rounded-full px-8 py-6 text-base transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,212,255,0.4)]"
               onClick={() => smoothScrollTo('#contact', 900, 60)}
             >
               <Mail size={18} className="mr-2" />
@@ -95,19 +93,20 @@ export function Hero() {
         {/* Social Links */}
         <motion.div variants={itemVariants} className="flex items-center justify-center gap-4">
           {[
-            { href: 'https://www.linkedin.com/in/chikwanda-chisha', icon: Linkedin },
-            { href: 'https://github.com/chikwanda', icon: Github },
+            { href: 'https://www.linkedin.com/in/chikwanda-chisha', icon: Linkedin, label: 'LinkedIn profile' },
+            { href: 'https://github.com/chikwanda', icon: Github, label: 'GitHub profile' },
           ].map((social, index) => (
             <motion.a
               key={index}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={social.label}
               className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-white/60 hover:text-cyan hover:border-cyan/50 transition-colors"
               whileHover={{ scale: 1.15, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
-              <social.icon size={20} />
+              <social.icon size={20} aria-hidden="true" />
             </motion.a>
           ))}
         </motion.div>
@@ -122,6 +121,7 @@ export function Hero() {
       >
         <motion.button
           onClick={() => smoothScrollTo('#about', 900, 60)}
+          aria-label="Scroll to About section"
           className="flex flex-col items-center gap-2 text-white/40 hover:text-cyan transition-colors"
           animate={{ y: [0, 8, 0] }}
           transition={{

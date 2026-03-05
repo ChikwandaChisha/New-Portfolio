@@ -85,7 +85,7 @@ function SkillCard({ skill }: { skill: typeof frontendSkills[0] }) {
           className="w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center group-hover:bg-cyan/20 transition-colors"
           whileHover={{ rotate: 10 }}
         >
-          <Icon size={20} className="text-cyan" />
+          <Icon size={20} className="text-cyan" aria-hidden="true" />
         </motion.div>
         <div>
           <h4 className="text-white font-medium text-sm">{skill.name}</h4>
@@ -109,7 +109,7 @@ function ExperienceCard({ experience, index }: { experience: typeof experiences[
         ease: [0.25, 0.1, 0.25, 1],
       }}
     >
-      <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-cyan shadow-[0_0_10px_rgba(0,212,255,0.5)]" />
+      <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-cyan shadow-[0_0_10px_rgba(0,212,255,0.5)]" aria-hidden="true" />
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
         <h3 className="text-xl font-bold text-white">{experience.role}</h3>
@@ -149,7 +149,7 @@ export function Experience() {
         <div className="mt-20">
           <ScrollReveal>
             <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-              <Briefcase className="text-cyan" />
+              <Briefcase className="text-cyan" aria-hidden="true" />
               Work Experience
             </h3>
           </ScrollReveal>
@@ -185,7 +185,7 @@ export function Experience() {
                     ease: 'easeInOut',
                   }}
                 >
-                  <Code2 size={20} className="text-cyan" />
+                  <Code2 size={20} className="text-cyan" aria-hidden="true" />
                 </motion.span>
                 Frontend Development
               </motion.h3>
@@ -223,7 +223,7 @@ export function Experience() {
                     delay: 1.5,
                   }}
                 >
-                  <Server size={20} className="text-cyan" />
+                  <Server size={20} className="text-cyan" aria-hidden="true" />
                 </motion.span>
                 Backend Development
               </motion.h3>

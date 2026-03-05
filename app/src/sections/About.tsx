@@ -35,7 +35,7 @@ export function About() {
   return (
     <section id="about" className="py-24 sm:py-32 relative overflow-hidden section-fade">
       {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Floating shapes */}
         <motion.div
           className="absolute top-20 left-10 w-20 h-20 rounded-full border border-cyan/10"
@@ -171,21 +171,21 @@ export function About() {
                   className="p-6 rounded-2xl border border-border bg-card/50 hover:border-cyan/30 transition-colors"
                   whileHover={{ y: -5, borderColor: 'rgba(0, 212, 255, 0.4)' }}
                 >
-                  <Briefcase className="w-8 h-8 text-cyan mb-4" />
+                  <Briefcase className="w-8 h-8 text-cyan mb-4" aria-hidden="true" />
                   <div className="text-3xl font-bold text-white mb-1">
                     <CountUp end={3} />+
                   </div>
                   <p className="text-white/60 text-sm">Years Experience</p>
-                  <p className="text-white/40 text-xs mt-1">Research & Industry</p>
+                  <p className="text-white/50 text-xs mt-1">Research & Industry</p>
                 </motion.div>
                 <motion.div
                   className="p-6 rounded-2xl border border-border bg-card/50 hover:border-cyan/30 transition-colors"
                   whileHover={{ y: -5, borderColor: 'rgba(0, 212, 255, 0.4)' }}
                 >
-                  <GraduationCap className="w-8 h-8 text-cyan mb-4" />
+                  <GraduationCap className="w-8 h-8 text-cyan mb-4" aria-hidden="true" />
                   <div className="text-lg font-bold text-white mb-1">Dartmouth College</div>
                   <p className="text-white/60 text-sm">BA, Computer Science</p>
-                  <p className="text-white/40 text-xs mt-1">2022 - 2026</p>
+                  <p className="text-white/50 text-xs mt-1">2022 - 2026</p>
                 </motion.div>
               </div>
             </ScrollReveal>
@@ -196,7 +196,7 @@ export function About() {
 
 
                 <div>
-                  <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider text-cyan">Awards & Honors</h4>
+                  <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider text-cyan">Awards & Honors</h3>
                   <ul className="grid sm:grid-cols-2 gap-2 text-sm">
                     <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-cyan" />Dartmouth Honor List</li>
                     <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-cyan" />EE Just STEM Fellow</li>
@@ -206,7 +206,7 @@ export function About() {
                 </div>
 
                 <div>
-                  <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider text-cyan">Relevant Coursework</h4>
+                  <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider text-cyan">Relevant Coursework</h3>
                   <p className="text-sm leading-relaxed">
                     Machine Learning, NLP, Software Design, Game Theory, Privacy & Cyber Security, Data Structures & Algorithms, Distributed Systems.
                   </p>

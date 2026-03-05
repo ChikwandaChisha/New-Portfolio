@@ -48,14 +48,14 @@ export function Contact() {
                 asChild
               >
                 <a href="mailto:chikwanda.chisha@dartmouth.edu">
-                  <Mail size={18} className="mr-2" />
+                  <Mail size={18} className="mr-2" aria-hidden="true" />
                   Email Me
                   <motion.span
                     className="ml-2 inline-block"
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
-                    <Send size={18} />
+                    <Send size={18} aria-hidden="true" />
                   </motion.span>
                 </a>
               </Button>
@@ -75,7 +75,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Linkedin size={18} className="mr-2" />
+                  <Linkedin size={18} className="mr-2" aria-hidden="true" />
                   LinkedIn
                 </a>
               </Button>
@@ -91,10 +91,10 @@ export function Contact() {
               className="flex items-center gap-2 text-white/50 hover:text-cyan transition-colors"
               whileHover={{ scale: 1.1, y: -2 }}
             >
-              <Github size={20} />
+              <Github size={20} aria-hidden="true" />
               <span className="text-sm">GitHub</span>
             </motion.a>
-            <span className="text-white/20">|</span>
+            <span className="text-white/20" aria-hidden="true">|</span>
             <motion.a
               href="https://www.linkedin.com/in/chikwanda-chisha"
               target="_blank"
@@ -102,7 +102,7 @@ export function Contact() {
               className="flex items-center gap-2 text-white/50 hover:text-cyan transition-colors"
               whileHover={{ scale: 1.1, y: -2 }}
             >
-              <Linkedin size={20} />
+              <Linkedin size={20} aria-hidden="true" />
               <span className="text-sm">LinkedIn</span>
             </motion.a>
           </div>
