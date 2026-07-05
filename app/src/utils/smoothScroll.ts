@@ -39,3 +39,21 @@ export function smoothScrollTo(selector: string, duration = 1000, offset = 0) {
 
     requestAnimationFrame(step);
 }
+
+/**
+ * Scroll to an in-page section by its `#id`. If the section isn't in the DOM
+ * (e.g. we're on a project detail route), navigate home first and stash the
+ * target so the home view can complete the scroll once it mounts.
+ */
+export function goToSection(href: string, duration = 800, offset = 72) {
+    if (document.querySelector(href)) {
+        smoothScrollTo(href, duration, offset);
+        return;
+    }
+    sessionStorage.setItem('pendingScroll', href);
+    if (window.location.hash) {
+        window.location.hash = '';
+    } else {
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+    }
+}

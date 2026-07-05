@@ -1,9 +1,21 @@
 import { motion } from 'framer-motion';
 import { SectionHeading } from '@/components/SectionHeading';
 import { StaggerContainer, StaggerItem } from '@/components/StaggerContainer';
-import { ArrowUpRight, Github, Lock } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github, Lock } from 'lucide-react';
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  tech: string[];
+  github: string | null;
+  demo: string | null;
+  /** When set, the card links to an in-app case-study page at #/project/<slug>. */
+  slug?: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: 'Arbitra',
@@ -28,11 +40,12 @@ const projects = [
     id: 3,
     title: 'Search Engine',
     description:
-      'High-performance search engine in C++ using multi-threading and inverted indexing. Ranks results across 1,000+ HTML documents.',
-    category: 'Systems · C++',
-    tech: ['C++', 'Multi-threading', 'Inverted Indexing'],
-    github: null,
+      'A three-stage search engine in C. A domain-bounded crawler, an inverted-index builder, and a ranked Boolean query engine, all built on custom data structures and runnable end to end with one command.',
+    category: 'Systems · C',
+    tech: ['C', 'Data Structures', 'Inverted Index'],
+    github: 'https://github.com/ChikwandaChisha/Search-Engine',
     demo: null,
+    slug: 'search-engine',
   },
   {
     id: 4,
@@ -56,8 +69,12 @@ const projects = [
   },
 ];
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
-  const primaryHref = project.demo ?? project.github ?? undefined;
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  // An in-app case study takes priority; otherwise fall back to a live demo or source.
+  const detailHref = project.slug ? `#/project/${project.slug}` : undefined;
+  const externalHref = project.demo ?? project.github ?? undefined;
+  const titleHref = detailHref ?? externalHref;
+  const titleExternal = !detailHref && Boolean(externalHref);
 
   return (
     <motion.article
@@ -73,8 +90,12 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       </div>
 
       <h3 className="mt-5 text-xl sm:text-2xl font-semibold tracking-tight text-foreground transition-colors duration-200 group-hover:text-accent">
-        {primaryHref ? (
-          <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="after:absolute after:inset-0">
+        {titleHref ? (
+          <a
+            href={titleHref}
+            {...(titleExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            className="after:absolute after:inset-0"
+          >
             {project.title}
           </a>
         ) : (
@@ -96,6 +117,16 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       </div>
 
       <div className="mt-6 pt-5 border-t border-border flex items-center gap-5 relative z-10">
+        {project.slug && (
+          <a
+            href={`#/project/${project.slug}`}
+            aria-label={`${project.title} case study`}
+            className="inline-flex items-center gap-1.5 text-sm text-accent hover:brightness-110 transition"
+          >
+            <span className="label-mono">Case study</span>
+            <ArrowRight size={15} aria-hidden="true" />
+          </a>
+        )}
         {project.github && (
           <a
             href={project.github}
@@ -120,7 +151,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
             <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         ) : (
-          !project.github && (
+          !project.github && !project.slug && (
             <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground/70">
               <Lock size={14} aria-hidden="true" />
               <span className="label-mono">Private</span>

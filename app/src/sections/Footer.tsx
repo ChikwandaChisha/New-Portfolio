@@ -1,4 +1,4 @@
-import { smoothScrollTo } from '@/utils/smoothScroll';
+import { goToSection } from '@/utils/smoothScroll';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -10,7 +10,7 @@ const navLinks = [
 export function Footer() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, 800, 72);
+    goToSection(href);
   };
 
   return (

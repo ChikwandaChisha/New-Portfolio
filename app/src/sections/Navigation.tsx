@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { smoothScrollTo } from '@/utils/smoothScroll';
+import { goToSection } from '@/utils/smoothScroll';
+import { useHashRoute } from '@/hooks/useHashRoute';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navLinks = [
@@ -15,6 +16,7 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const route = useHashRoute();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24);
@@ -32,6 +34,9 @@ export function Navigation() {
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
+    // The observed sections only exist on the home view, and React remounts them
+    // as fresh nodes after a round-trip to a detail page — so re-attach per route.
+    if (route.name !== 'home') return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -45,16 +50,17 @@ export function Navigation() {
       if (section) observer.observe(section);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [route]);
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, 800, 72);
+    goToSection(href);
     setIsMobileMenuOpen(false);
   }, []);
 
   const scrollTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    if (window.location.hash) window.location.hash = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setIsMobileMenuOpen(false);
   };
