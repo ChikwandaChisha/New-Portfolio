@@ -1,139 +1,112 @@
 import { motion, type Variants } from 'framer-motion';
-import { Briefcase, Mail, ChevronDown, Linkedin, Github } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowUpRight, ArrowDown, Linkedin, Github } from 'lucide-react';
 import { smoothScrollTo } from '@/utils/smoothScroll';
 
+const container: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const meta = [
+  { label: 'Focus', value: 'AI · Security · Systems' },
+  { label: 'Education', value: "Dartmouth College, CS '26" },
+  { label: 'Latest', value: 'Arbitra' },
+];
+
 export function Hero() {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.4, 0, 0.2, 1] as const,
-      },
-    },
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-
-
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-      >
-
-
-        {/* Main Title */}
-        <motion.div variants={itemVariants} className="mb-6">
-          <p className="text-white/60 text-lg sm:text-xl mb-2">Hello, I'm</p>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-            <span className="inline-block text-gradient-silver" aria-label="Chikwanda Chisha">Chikwanda Chisha</span>
-          </h1>
-        </motion.div>
-
-
-
-        {/* Description */}
-        <motion.p
-          variants={itemVariants}
-          className="text-white/50 text-base sm:text-lg max-w-xl mx-auto mb-10"
-        >
-          I love to think, code and cook.
-        </motion.p>
-
-        {/* CTA Buttons */}
+    <section className="relative min-h-screen flex items-center pt-28 pb-20">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 w-full">
         <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end"
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Button
-              size="lg"
-              className="bg-cyan hover:bg-cyan-dark text-black font-semibold rounded-full px-8 py-6 text-base transition-all duration-300 hover:shadow-glow"
-              onClick={() => smoothScrollTo('#projects', 900, 60)}
-            >
-              <Briefcase size={18} className="mr-2" />
-              View My Work
-            </Button>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Button
-              size="lg"
-              className="bg-transparent hover:bg-cyan/20 border border-cyan/50 text-white hover:text-cyan font-semibold rounded-full px-8 py-6 text-base transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,212,255,0.4)]"
-              onClick={() => smoothScrollTo('#contact', 900, 60)}
-            >
-              <Mail size={18} className="mr-2" />
-              Contact Me
-            </Button>
-          </motion.div>
-        </motion.div>
+          <div className="lg:col-span-8">
+            <motion.p variants={item} className="label-mono text-muted-foreground mb-6 flex items-center gap-2.5">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+              Software Engineer · CS @ Dartmouth
+            </motion.p>
 
-        {/* Social Links */}
-        <motion.div variants={itemVariants} className="flex items-center justify-center gap-4">
-          {[
-            { href: 'https://www.linkedin.com/in/chikwanda-chisha', icon: Linkedin, label: 'LinkedIn profile' },
-            { href: 'https://github.com/chikwanda', icon: Github, label: 'GitHub profile' },
-          ].map((social, index) => (
-            <motion.a
-              key={index}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.label}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-white/60 hover:text-cyan hover:border-cyan/50 transition-colors"
-              whileHover={{ scale: 1.15, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.h1
+              variants={item}
+              className="text-[2.75rem] leading-[1.02] sm:text-6xl lg:text-7xl font-semibold tracking-tightest text-foreground"
             >
-              <social.icon size={20} aria-hidden="true" />
-            </motion.a>
-          ))}
-        </motion.div>
-      </motion.div>
+              Chikwanda Chisha
+            </motion.h1>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            <motion.p
+              variants={item}
+              className="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-muted-foreground"
+            >
+              I design and build software across AI, security, and systems — the kind that
+              holds up under scrutiny. I love to think, code, and cook.
+            </motion.p>
+
+            <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => smoothScrollTo('#projects', 800, 72)}
+                className="group inline-flex items-center gap-2 h-12 px-6 rounded-sm bg-accent text-accent-foreground text-sm font-semibold transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-[0_6px_24px_-8px_hsl(33_66%_50%/0.6)]"
+              >
+                View work
+                <ArrowUpRight size={17} className="transition-transform duration-200 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]" aria-hidden="true" />
+              </button>
+              <button
+                onClick={() => smoothScrollTo('#contact', 800, 72)}
+                className="inline-flex items-center gap-2 h-12 px-6 rounded-sm border border-border text-foreground text-sm font-medium transition-colors duration-200 hover:border-accent hover:bg-accent/5"
+              >
+                Get in touch
+              </button>
+            </motion.div>
+
+            <motion.div variants={item} className="mt-8 flex items-center gap-5">
+              {[
+                { href: 'https://github.com/chikwanda', icon: Github, label: 'GitHub' },
+                { href: 'https://www.linkedin.com/in/chikwanda-chisha', icon: Linkedin, label: 'LinkedIn' },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <s.icon size={17} aria-hidden="true" />
+                  <span className="label-mono">{s.label}</span>
+                </a>
+              ))}
+            </motion.div>
+          </div>
+
+          <motion.dl variants={item} className="lg:col-span-4 lg:pb-2">
+            {meta.map((m) => (
+              <div key={m.label} className="flex items-baseline justify-between gap-4 py-3 border-t border-border first:border-t-0 lg:first:border-t">
+                <dt className="label-mono text-muted-foreground">{m.label}</dt>
+                <dd className="text-sm text-foreground text-right">{m.value}</dd>
+              </div>
+            ))}
+          </motion.dl>
+        </motion.div>
+      </div>
+
+      <a
+        href="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          smoothScrollTo('#about', 800, 72);
+        }}
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 inline-flex flex-col items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+        aria-label="Scroll to About"
       >
-        <motion.button
-          onClick={() => smoothScrollTo('#about', 900, 60)}
-          aria-label="Scroll to About section"
-          className="flex flex-col items-center gap-2 text-white/40 hover:text-cyan transition-colors"
-          animate={{ y: [0, 8, 0] }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        >
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
-          <ChevronDown size={20} />
-        </motion.button>
-      </motion.div>
+        <span className="label-mono">Scroll</span>
+        <ArrowDown size={16} aria-hidden="true" />
+      </a>
     </section>
   );
 }

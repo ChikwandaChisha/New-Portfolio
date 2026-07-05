@@ -1,225 +1,150 @@
 import { motion } from 'framer-motion';
-import { ScrollReveal } from '@/components/ScrollReveal';
+import { SectionHeading } from '@/components/SectionHeading';
 import { StaggerContainer, StaggerItem } from '@/components/StaggerContainer';
-import { ExternalLink, Github, Lock } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { ArrowUpRight, Github, Lock } from 'lucide-react';
 
 const projects = [
   {
     id: 1,
     title: 'Arbitra',
-    description: 'AI-powered product search and comparison platform. Type natural language queries to get ranked results and color-coded comparison tables. Built as a Monorepo.',
-    category: 'AI & E-commerce',
+    description:
+      'AI-powered product search and comparison. Natural-language queries return ranked results and color-coded comparison tables. Built as a Turborepo monorepo.',
+    category: 'AI · E-commerce',
     tech: ['Next.js 15', 'Fastify', 'Prisma', 'PostgreSQL', 'Turborepo'],
     github: null,
     demo: null,
-    color: 'from-purple-500/20 to-cyan/20',
   },
   {
     id: 2,
-    title: 'CyptNote',
-    description: 'Secure networking platform using React, Node.js, and Supabase. Features end-to-end RSA encryption, role-based access control, and audit logging.',
-    category: 'Full Stack & Security',
+    title: 'CryptNote',
+    description:
+      'Secure networking platform with end-to-end RSA encryption, role-based access control, and audit logging.',
+    category: 'Full Stack · Security',
     tech: ['React', 'Node.js', 'Supabase', 'PostgreSQL'],
     github: 'https://github.com/chikwanda/cryptnote',
     demo: null,
-    color: 'from-cyan/20 to-blue-500/20',
   },
   {
     id: 3,
     title: 'Search Engine',
-    description: 'High-performance search engine built in C++ using multi-threading and inverted indexing. Efficiently ranks results from 1000+ HTML documents.',
-    category: 'Systems & C++',
-    tech: ['C++', 'Multi-threading', 'Inverted Indexing', 'Algorithms'],
+    description:
+      'High-performance search engine in C++ using multi-threading and inverted indexing. Ranks results across 1,000+ HTML documents.',
+    category: 'Systems · C++',
+    tech: ['C++', 'Multi-threading', 'Inverted Indexing'],
     github: null,
     demo: null,
-    color: 'from-cyan/20 to-blue-500/20',
   },
   {
     id: 4,
     title: 'Swahili Toxicity Detection',
-    description: 'AI model classifying Swahili tweets (neutral, offensive, hate) using XLM-Roberta. Achieved 0.486 Macro F1-score on imbalanced datasets.',
-    category: 'AI / ML',
+    description:
+      'Classifies Swahili tweets (neutral, offensive, hate) with XLM-Roberta. 0.486 Macro F1 on imbalanced data.',
+    category: 'AI · ML',
     tech: ['Python', 'PyTorch', 'Hugging Face', 'Scikit-learn'],
     github: null,
     demo: null,
-    color: 'from-cyan/20 to-blue-500/20',
   },
   {
     id: 5,
     title: 'SoundSwipe',
-    description: 'Mobile music discovery app integrating Apple Music API. Features AI-powered recommendations and real-time library synchronization.',
-    category: 'Mobile App',
+    description:
+      'Mobile music-discovery app on the Apple Music API, with recommendations and real-time library sync.',
+    category: 'Mobile',
     tech: ['React Native', 'Expo', 'Python', 'OAuth 2.0'],
     github: null,
     demo: null,
-    color: 'from-cyan/20 to-blue-500/20',
   },
 ];
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+  const primaryHref = project.demo ?? project.github ?? undefined;
+
   return (
-    <motion.div
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-      className="group relative rounded-2xl border border-border bg-card/30 overflow-hidden hover:border-cyan/40 transition-colors duration-300"
+    <motion.article
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
+      className="group relative flex flex-col h-full border border-border rounded-sm bg-card/40 p-6 sm:p-7 transition-colors duration-200 hover:border-accent/50"
     >
-      {/* Animated glow on hover */}
-      <motion.div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        animate={{
-          background: [
-            'radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%)',
-            'radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 60%)',
-            'radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%)',
-          ],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-
-      {/* Project Number */}
-      <div className="absolute top-4 left-4 z-10" aria-hidden="true">
-        <motion.span
-          className="text-6xl font-bold text-white/5 group-hover:text-cyan/10 transition-colors"
-          animate={{
-            opacity: [0.05, 0.1, 0.05],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        >
-          0{index + 1}
-        </motion.span>
+      <div className="flex items-center justify-between">
+        <span className="label-mono text-muted-foreground/70">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <span className="label-mono text-muted-foreground">{project.category}</span>
       </div>
 
-      {/* Content */}
-      <div className="p-6 sm:p-8 relative z-10">
-        {/* Category Badge */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-        >
-          <Badge
-            variant="outline"
-            className="mb-4 border-cyan/30 text-cyan bg-cyan/5 hover:bg-cyan/10"
+      <h3 className="mt-5 text-xl sm:text-2xl font-semibold tracking-tight text-foreground transition-colors duration-200 group-hover:text-accent">
+        {primaryHref ? (
+          <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="after:absolute after:inset-0">
+            {project.title}
+          </a>
+        ) : (
+          project.title
+        )}
+      </h3>
+
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {project.tech.map((t) => (
+          <span
+            key={t}
+            className="font-mono text-[11px] text-muted-foreground border border-border rounded-sm px-2 py-0.5"
           >
-            {project.category}
-          </Badge>
-        </motion.div>
-
-        {/* Title */}
-        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">
-          {project.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-white/60 mb-6 line-clamp-3">
-          {project.description}
-        </p>
-
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((tech, i) => (
-            <motion.span
-              key={tech}
-              className="px-3 py-1 text-xs font-medium rounded-full bg-white/5 text-white/70 border border-white/10 hover:border-cyan/30 hover:text-cyan transition-colors"
-              whileHover={{ scale: 1.1 }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-            >
-              {tech}
-            </motion.span>
-          ))}
-        </div>
-
-        {/* Links */}
-        <div className="flex items-center gap-4">
-          {project.github && (
-            <motion.a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`View ${project.title} source code on GitHub`}
-              className="flex items-center gap-2 text-white/60 hover:text-cyan transition-colors"
-              whileHover={{ x: 3 }}
-            >
-              <Github size={18} aria-hidden="true" />
-              <span className="text-sm">Code</span>
-            </motion.a>
-          )}
-          {project.demo ? (
-            <motion.a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`View ${project.title} live demo`}
-              className="flex items-center gap-2 text-white/60 hover:text-cyan transition-colors"
-              whileHover={{ x: 3 }}
-            >
-              <ExternalLink size={18} aria-hidden="true" />
-              <span className="text-sm">Live Demo</span>
-            </motion.a>
-          ) : (
-            <span className="flex items-center gap-2 text-white/50" aria-label={`${project.title} is a private project`}>
-              <Lock size={18} aria-hidden="true" />
-              <span className="text-sm">Private</span>
-            </span>
-          )}
-        </div>
+            {t}
+          </span>
+        ))}
       </div>
 
-      {/* Hover Gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} aria-hidden="true" />
-    </motion.div>
+      <div className="mt-6 pt-5 border-t border-border flex items-center gap-5 relative z-10">
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} source on GitHub`}
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Github size={15} aria-hidden="true" />
+            <span className="label-mono">Code</span>
+          </a>
+        )}
+        {project.demo ? (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} live demo`}
+            className="inline-flex items-center gap-1.5 text-sm text-accent hover:brightness-110 transition"
+          >
+            <span className="label-mono">Live</span>
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        ) : (
+          !project.github && (
+            <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground/70">
+              <Lock size={14} aria-hidden="true" />
+              <span className="label-mono">Private</span>
+            </span>
+          )
+        )}
+      </div>
+    </motion.article>
   );
 }
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 sm:py-32 relative overflow-hidden section-fade">
+    <section id="projects" className="py-24 sm:py-32">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <SectionHeading index="02" title="Selected Projects" note="What I've built" />
 
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <ScrollReveal className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">Projects</h2>
-        </ScrollReveal>
-
-        {/* Projects Grid */}
-        <StaggerContainer
-          className="grid md:grid-cols-2 gap-6 lg:gap-8"
-          staggerDelay={0.15}
-          delayStart={0.1}
-        >
+        <StaggerContainer className="grid md:grid-cols-2 gap-5">
           {projects.map((project, index) => (
-            <StaggerItem key={project.id}>
+            <StaggerItem key={project.id} className="h-full">
               <ProjectCard project={project} index={index} />
             </StaggerItem>
           ))}
         </StaggerContainer>
-
-        {/* More Projects Coming */}
-        <ScrollReveal delay={0.4} className="mt-12 text-center">
-          <motion.p
-            className="text-white/40 text-sm"
-            animate={{
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
-            More projects coming soon...
-          </motion.p>
-        </ScrollReveal>
       </div>
     </section>
   );

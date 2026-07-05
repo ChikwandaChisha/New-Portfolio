@@ -38,26 +38,26 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        cyan: {
-          DEFAULT: '#00d4ff',
-          dark: '#0099cc',
-          light: '#33ddff',
+        // Amber accent, exposed directly for convenience
+        amber: {
+          DEFAULT: '#E0A458',
+          soft: '#EAB878',
+          deep: '#C4863A',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Space Grotesk', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
+      letterSpacing: {
+        tightest: '-0.03em',
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-        xs: "calc(var(--radius) - 6px)",
-      },
-      boxShadow: {
-        xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        glow: "0 0 20px rgba(0, 212, 255, 0.3)",
-        'glow-lg': "0 0 40px rgba(0, 212, 255, 0.4)",
+        md: "calc(var(--radius) - 1px)",
+        sm: "calc(var(--radius) - 2px)",
+        xs: "1px",
       },
       keyframes: {
         "accordion-down": {
@@ -72,16 +72,11 @@ module.exports = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
-        "bounce-slow": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(10px)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
-        "bounce-slow": "bounce-slow 2s ease-in-out infinite",
       },
     },
   },

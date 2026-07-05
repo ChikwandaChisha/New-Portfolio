@@ -1,7 +1,5 @@
-/**
- * Custom smooth scroll — gentle acceleration and deceleration.
- * Feels smooth and cinematic, like drifting through space.
- */
+// Don't set `scroll-behavior: smooth` on html/body — it re-animates every
+// per-frame scrollTo below and fights this.
 
 function easeInOutCubic(t: number): number {
     return t < 0.5
@@ -17,6 +15,13 @@ export function smoothScrollTo(selector: string, duration = 1000, offset = 0) {
     const elementRect = element.getBoundingClientRect();
     const target = start + elementRect.top - offset;
     const distance = target - start;
+
+    // Honor reduced-motion: jump straight there.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.scrollTo(0, target);
+        return;
+    }
+
     let startTime: number | null = null;
 
     function step(timestamp: number) {

@@ -11,11 +11,11 @@ interface StaggerContainerProps {
 export function StaggerContainer({
   children,
   className = '',
-  staggerDelay = 0.1,
+  staggerDelay = 0.05,
   delayStart = 0,
 }: StaggerContainerProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -120px 0px' });
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -49,14 +49,11 @@ export function StaggerItem({
   className?: string;
 }) {
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 12 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.4, 0, 0.2, 1] as const,
-      },
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
     },
   };
 

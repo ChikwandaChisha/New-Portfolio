@@ -1,13 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, User, Briefcase, FolderGit2, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { smoothScrollTo } from '@/utils/smoothScroll';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navLinks = [
-  { name: 'About', href: '#about', icon: User },
-  { name: 'Projects', href: '#projects', icon: FolderGit2 },
-  { name: 'Experience', href: '#experience', icon: Briefcase },
-  { name: 'Contact', href: '#contact', icon: Mail },
+  { name: 'About', href: '#about', index: '01' },
+  { name: 'Projects', href: '#projects', index: '02' },
+  { name: 'Experience', href: '#experience', index: '03' },
+  { name: 'Contact', href: '#contact', index: '04' },
 ];
 
 export function Navigation() {
@@ -16,22 +17,16 @@ export function Navigation() {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-      }
+      if (e.key === 'Escape' && isMobileMenuOpen) setIsMobileMenuOpen(false);
     };
-
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isMobileMenuOpen]);
@@ -40,78 +35,95 @@ export function Navigation() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
       { threshold: 0.3 }
     );
-
     navLinks.forEach((link) => {
       const section = document.querySelector(link.href);
       if (section) observer.observe(section);
     });
-
     return () => observer.disconnect();
   }, []);
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, 900, 60);
+    smoothScrollTo(href, 800, 72);
     setIsMobileMenuOpen(false);
   }, []);
 
+  const scrollTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
+      <motion.header
+        initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         aria-label="Main navigation"
-        className={`fixed left-0 right-0 z-50 flex justify-start md:justify-center px-4 md:px-0 transition-all duration-300 ${isScrolled ? 'top-4' : 'top-6'
-          }`}
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          isScrolled
+            ? 'bg-background/85 backdrop-blur-md border-b border-border'
+            : 'bg-transparent border-b border-transparent'
+        }`}
       >
-        <div className="glass border border-border/50 rounded-full px-3 py-2 hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-              aria-current={activeSection === link.href.slice(1) ? 'true' : undefined}
-              className={`relative px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${activeSection === link.href.slice(1)
-                ? 'text-black'
-                : 'text-white/70 hover:text-white hover:bg-white/10'
-                }`}
-            >
-              {activeSection === link.href.slice(1) && (
-                <motion.div
-                  layoutId="activeNav"
-                  className="absolute inset-0 bg-cyan rounded-full shadow-[0_0_15px_rgba(0,212,255,0.4)]"
-                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10">{link.name}</span>
-            </motion.a>
-          ))}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="glass border border-border/50 rounded-full px-2 py-2 md:hidden flex items-center">
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
-            className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+          <a
+            href="#"
+            onClick={scrollTop}
+            className="group flex items-center gap-2.5 text-foreground"
+            aria-label="Back to top"
           >
-            {isMobileMenuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-          </button>
-        </div>
-      </motion.nav>
+            <span className="flex h-7 w-7 items-center justify-center border border-border text-[11px] font-mono font-medium text-accent transition-colors group-hover:border-accent">
+              CC
+            </span>
+            <span className="text-sm font-medium tracking-tight hidden sm:inline">
+              Chikwanda Chisha
+            </span>
+          </a>
 
-      {/* Mobile Menu */}
+          <div className="flex items-center gap-3 md:gap-6">
+            <nav className="hidden md:flex items-center gap-8" aria-label="Sections">
+              {navLinks.map((link) => {
+                const active = activeSection === link.href.slice(1);
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    aria-current={active ? 'true' : undefined}
+                    className={`group flex items-center gap-1.5 label-mono transition-colors ${
+                      active ? 'text-accent' : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    <span className={active ? 'text-accent' : 'text-muted-foreground/60'}>
+                      {link.index}
+                    </span>
+                    <span>{link.name}</span>
+                  </a>
+                );
+              })}
+            </nav>
+
+            <ThemeToggle />
+
+            <button
+              onClick={() => setIsMobileMenuOpen((v) => !v)}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+              className="md:hidden flex h-9 w-9 items-center justify-center border border-border text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              {isMobileMenuOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
+            </button>
+          </div>
+        </div>
+      </motion.header>
+
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -121,31 +133,24 @@ export function Navigation() {
             transition={{ duration: 0.2 }}
             role="dialog"
             aria-label="Navigation menu"
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 bg-background md:hidden"
           >
-            <motion.nav
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
+            <nav
               aria-label="Mobile navigation"
-              className="flex flex-col items-start justify-center h-full gap-6 px-8"
+              className="flex flex-col justify-center h-full px-8 gap-1"
             >
-              {navLinks.map((link, index) => (
-                <motion.a
+              {navLinks.map((link) => (
+                <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                  className="flex items-center gap-3 text-2xl font-medium text-white/70 hover:text-cyan transition-colors"
+                  className="flex items-baseline gap-4 py-3 border-b border-border text-foreground hover:text-accent transition-colors"
                 >
-                  <link.icon size={24} aria-hidden="true" />
-                  {link.name}
-                </motion.a>
+                  <span className="label-mono text-muted-foreground/70">{link.index}</span>
+                  <span className="text-3xl font-medium tracking-tight">{link.name}</span>
+                </a>
               ))}
-            </motion.nav>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

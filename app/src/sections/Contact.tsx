@@ -1,112 +1,63 @@
-import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { Mail, Linkedin, Github, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { SectionHeading } from '@/components/SectionHeading';
+import { ArrowUpRight, Mail } from 'lucide-react';
+
+const EMAIL = 'chikwanda.chisha@dartmouth.edu';
+
+const channels = [
+  { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
+  { label: 'LinkedIn', value: '/in/chikwanda-chisha', href: 'https://www.linkedin.com/in/chikwanda-chisha' },
+  { label: 'GitHub', value: '@chikwanda', href: 'https://github.com/chikwanda' },
+];
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 sm:py-32 relative overflow-hidden section-fade">
+    <section id="contact" className="py-24 sm:py-32">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <SectionHeading index="04" title="Contact" note="Say hello" />
 
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <ScrollReveal className="lg:col-span-7">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.08] text-foreground">
+              Have something worth building?
+              <br />
+              <span className="text-muted-foreground">Let's talk.</span>
+            </h3>
+            <p className="mt-6 max-w-lg text-base sm:text-lg leading-relaxed text-muted-foreground">
+              I'm open to internships, research, and collaboration. The fastest way to reach
+              me is email — I read everything.
+            </p>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <ScrollReveal className="text-center">
-
-
-          {/* Heading */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Let's build something{' '}
-            <motion.span
-              className="text-gradient inline-block"
-              animate={{
-                scale: [1, 1.02, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
+            <a
+              href={`mailto:${EMAIL}`}
+              className="group mt-8 inline-flex items-center gap-2.5 h-12 px-6 rounded-sm bg-accent text-accent-foreground text-sm font-semibold transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-[0_6px_24px_-8px_hsl(33_66%_50%/0.6)]"
             >
-              amazing
-            </motion.span>{' '}
-            together
-          </h2>
+              <Mail size={17} aria-hidden="true" />
+              Email me
+              <ArrowUpRight size={16} className="transition-transform duration-200 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]" aria-hidden="true" />
+            </a>
+          </ScrollReveal>
 
-          {/* Subtext */}
-          <p className="text-white/60 text-lg sm:text-xl max-w-xl mx-auto mb-10">
-            Have a project in mind? I'd love to hear about it. Let's connect and bring your ideas to life.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button
-                size="lg"
-                className="bg-cyan hover:bg-cyan-dark text-black font-semibold rounded-full px-8 py-6 text-base transition-all duration-300 hover:shadow-glow group"
-                asChild
-              >
-                <a href="mailto:chikwanda.chisha@dartmouth.edu">
-                  <Mail size={18} className="mr-2" aria-hidden="true" />
-                  Email Me
-                  <motion.span
-                    className="ml-2 inline-block"
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <Send size={18} aria-hidden="true" />
-                  </motion.span>
-                </a>
-              </Button>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-border hover:border-cyan hover:bg-cyan/20 text-white hover:text-cyan rounded-full px-8 py-6 text-base transition-all duration-300 hover:shadow-glow"
-                asChild
-              >
+          <ScrollReveal className="lg:col-span-5 lg:pt-2">
+            <div className="border-t border-border">
+              {channels.map((c) => (
                 <a
-                  href="https://www.linkedin.com/in/chikwanda-chisha"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  key={c.label}
+                  href={c.href}
+                  target={c.href.startsWith('http') ? '_blank' : undefined}
+                  rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="group flex items-center justify-between gap-4 py-4 border-b border-border transition-colors hover:bg-accent/5 -mx-3 px-3"
                 >
-                  <Linkedin size={18} className="mr-2" aria-hidden="true" />
-                  LinkedIn
+                  <span className="label-mono text-muted-foreground">{c.label}</span>
+                  <span className="flex items-center gap-2 text-sm text-foreground group-hover:text-accent transition-colors">
+                    <span className="font-mono text-[13px] truncate">{c.value}</span>
+                    <ArrowUpRight size={15} className="shrink-0 text-muted-foreground group-hover:text-accent transition-colors" aria-hidden="true" />
+                  </span>
                 </a>
-              </Button>
-            </motion.div>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center justify-center gap-6">
-            <motion.a
-              href="https://github.com/chikwanda"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white/50 hover:text-cyan transition-colors"
-              whileHover={{ scale: 1.1, y: -2 }}
-            >
-              <Github size={20} aria-hidden="true" />
-              <span className="text-sm">GitHub</span>
-            </motion.a>
-            <span className="text-white/20" aria-hidden="true">|</span>
-            <motion.a
-              href="https://www.linkedin.com/in/chikwanda-chisha"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white/50 hover:text-cyan transition-colors"
-              whileHover={{ scale: 1.1, y: -2 }}
-            >
-              <Linkedin size={20} aria-hidden="true" />
-              <span className="text-sm">LinkedIn</span>
-            </motion.a>
-          </div>
-        </ScrollReveal>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );
