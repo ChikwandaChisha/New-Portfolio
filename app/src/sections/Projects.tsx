@@ -64,11 +64,12 @@ const projects: Project[] = [
     id: 5,
     title: 'SoundSwipe',
     description:
-      'Mobile music-discovery app on the Apple Music API, with recommendations and real-time library sync.',
+      'Gesture-driven music discovery. Swipe through Apple Music previews to skip or save, backed by an AI recommender that learns within each session and a React Native swipe deck bridged to Apple MusicKit.',
     category: 'Mobile',
-    tech: ['React Native', 'Expo', 'Python', 'OAuth 2.0'],
+    tech: ['React Native', 'Expo', 'Apple MusicKit', 'Firebase'],
     github: null,
     demo: null,
+    slug: 'soundswipe',
   },
 ];
 

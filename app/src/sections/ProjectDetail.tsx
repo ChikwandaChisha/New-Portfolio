@@ -429,6 +429,88 @@ npm run dev`,
       },
     ],
   },
+
+  soundswipe: {
+    eyebrow: 'Mobile',
+    title: 'SoundSwipe',
+    summary:
+      'A gesture-driven music-discovery app that collapses discover, sample, and sort into a single swipe loop. Swipe through 30-second Apple Music previews to skip or save a track, flip a card for artist context, and let an AI recommender adapt within the session. Built in React Native with a physics-based swipe deck and an invisible WebView bridge to Apple MusicKit.',
+    meta: [
+      { label: 'Platform', value: 'React Native · Expo' },
+      { label: 'Music', value: 'Apple MusicKit' },
+      { label: 'Auth', value: 'Firebase' },
+      { label: 'Backend', value: 'Express · Firestore' },
+    ],
+    blocks: [
+      {
+        kind: 'prose',
+        index: '01',
+        title: 'Overview',
+        body: [
+          'Music discovery on the big streaming platforms is passive and low-signal. Algorithmic radio plays songs at you, but capturing the good ones is a multi-step chore, and the moment of liking a track is separated from saving it by too much interface.',
+          'SoundSwipe collapses discover, sample, and sort into one gestural loop. Swipe left to skip, swipe right to drop a song into a playlist, swipe up or down to move through the queue, and tap to flip the card for artist context. Every action feeds back into an AI recommendation engine that learns within the session.',
+        ],
+      },
+      {
+        kind: 'stages',
+        index: '02',
+        title: 'The swipe deck',
+        intro:
+          'The feed is the heart of the app: a direction-locked, physics-based swipe card built with gesture-handler and Reanimated.',
+        flow: ['Discover', 'Sample', 'Sort'],
+        stages: [
+          {
+            step: '01',
+            name: 'Direction-locked gestures',
+            body: 'A pan gesture locks to a single axis based on which threshold it crosses first, so a card never wobbles diagonally. Horizontal swipes rotate the card and interpolate its background from red for skip, through white, to green for save, while vertical swipes page through the queue.',
+          },
+          {
+            step: '02',
+            name: 'Gesture to intent',
+            body: 'Swipe right opens a multi-select playlist picker and records a like, swipe left skips and records a dislike, swipe up or down moves between songs, and tapping the card flips it in 3D to reveal the album and an AI-generated artist description.',
+          },
+          {
+            step: '03',
+            name: 'A loop that learns',
+            body: 'Every like and dislike streams back to the session, and as the queue nears its end the deck pre-fetches a fresh batch of recommendations, so it keeps adapting to the listener and never stalls.',
+          },
+          {
+            step: '04',
+            name: 'Continuous playback',
+            body: 'Thirty-second previews stream from the Apple Music catalog and auto-play, with a timer that advances to the next track when a preview ends, turning the deck into a radio-like stream.',
+          },
+        ],
+        note: 'Animation stays on the UI thread through Reanimated while state updates run on the JS thread via runOnJS, so the deck stays smooth even under fast swiping.',
+      },
+      {
+        kind: 'prose',
+        index: '03',
+        title: 'Architecture',
+        body: [
+          'The client is a React Native and Expo app wired through a React Navigation stack of screens (login, profile, create-search, and the feed), with Firebase handling email and password auth. An Express API on Render backs it, storing users and search sessions in Firestore and calling an LLM recommendation service for songs, feedback, and artist descriptions.',
+          'The trickiest piece is Apple Music, which has no native React Native SDK. SoundSwipe embeds an invisible 0-by-0 WebView that loads MusicKit JS straight from Apple and talks to React Native over postMessage. A handshake drives it: the WebView signals that the bridge is ready, React Native fetches a signed developer token from the backend and sends a configure message, the WebView configures MusicKit and authorizes, and the resulting user token is persisted to Firestore. The whole flow is wrapped in a React Context so any screen can trigger authorization.',
+        ],
+      },
+      {
+        kind: 'bullets',
+        index: '04',
+        title: 'Engineering challenges',
+        items: [
+          'Fixed an audio overplay bug where fast swiping left several previews playing at once, by unloading each sound before loading the next and again on unmount, which is lifecycle-correct audio handling in React.',
+          'Bridged Apple MusicKit into React Native through a hidden WebView, with a ready handshake that guards against races between the WebView load and the token fetch.',
+          'Kept the recommendation deck from stalling by pre-fetching the next batch of songs before the queue empties.',
+          'Made the login screen keyboard-aware, shrinking its title and shifting layout when the keyboard appears.',
+          'Ran swipe animations on the UI thread with Reanimated while syncing state on the JS thread, so gestures stay smooth.',
+        ],
+      },
+      {
+        kind: 'tags',
+        index: '05',
+        title: 'Stack',
+        items: ['React Native', 'Expo', 'Reanimated', 'Apple MusicKit', 'Firebase', 'Firestore', 'Express'],
+      },
+    ],
+  },
 };
 
 function BackLink() {
