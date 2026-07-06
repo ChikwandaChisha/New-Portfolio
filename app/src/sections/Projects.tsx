@@ -20,21 +20,23 @@ const projects: Project[] = [
     id: 1,
     title: 'Arbitra',
     description:
-      'AI-powered product search and comparison. Natural-language queries return ranked results and color-coded comparison tables. Built as a Turborepo monorepo.',
+      'AI-powered product search and comparison. Natural-language queries return ranked cards with verdicts or side-by-side comparisons, powered by Claude for reasoning and Rainforest for live Amazon data. Built as a Turborepo monorepo.',
     category: 'AI · E-commerce',
-    tech: ['Next.js 15', 'Fastify', 'Prisma', 'PostgreSQL', 'Turborepo'],
+    tech: ['Next.js 16', 'React 19', 'Fastify', 'Prisma', 'Turborepo'],
     github: null,
-    demo: null,
+    demo: 'https://arbitraweb-production.up.railway.app/',
+    slug: 'arbitra',
   },
   {
     id: 2,
     title: 'CryptNote',
     description:
-      'Secure networking platform with end-to-end RSA encryption, role-based access control, and audit logging.',
+      'End-to-end encrypted messaging platform with per-user RSA keys, role-based access control backed by database row-level security, and tamper-evident audit logging.',
     category: 'Full Stack · Security',
-    tech: ['React', 'Node.js', 'Supabase', 'PostgreSQL'],
-    github: 'https://github.com/chikwanda/cryptnote',
+    tech: ['React', 'TypeScript', 'Supabase', 'PostgreSQL'],
+    github: 'https://github.com/ChikwandaChisha/CryptNote',
     demo: null,
+    slug: 'cryptnote',
   },
   {
     id: 3,
@@ -51,11 +53,12 @@ const projects: Project[] = [
     id: 4,
     title: 'Swahili Toxicity Detection',
     description:
-      'Classifies Swahili tweets (neutral, offensive, hate) with XLM-Roberta. 0.486 Macro F1 on imbalanced data.',
+      'Three-class Swahili toxicity detection (neutral, offensive, hate) comparing classical ML, a multilingual transformer, and a zero-shot LLM. Linear SVM led with a 0.486 macro-F1.',
     category: 'AI · ML',
     tech: ['Python', 'PyTorch', 'Hugging Face', 'Scikit-learn'],
     github: null,
     demo: null,
+    slug: 'swahili-toxicity-detection',
   },
   {
     id: 5,
