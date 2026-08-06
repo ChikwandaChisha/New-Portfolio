@@ -35,7 +35,7 @@ const projects: Project[] = [
     category: 'Full Stack · Security',
     tech: ['React', 'TypeScript', 'Supabase', 'PostgreSQL'],
     github: 'https://github.com/ChikwandaChisha/CryptNote',
-    demo: null,
+    demo: 'https://crypt-note-rust.vercel.app/',
     slug: 'cryptnote',
   },
   {
@@ -131,6 +131,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <ArrowRight size={15} aria-hidden="true" />
           </a>
         )}
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} live demo`}
+            className="inline-flex items-center gap-1.5 text-sm text-accent hover:brightness-110 transition"
+          >
+            <span className="label-mono">Live</span>
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        )}
         {project.github && (
           <a
             href={project.github}
@@ -143,24 +155,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <span className="label-mono">Code</span>
           </a>
         )}
-        {project.demo ? (
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${project.title} live demo`}
-            className="inline-flex items-center gap-1.5 text-sm text-accent hover:brightness-110 transition"
-          >
-            <span className="label-mono">Live</span>
-            <ArrowUpRight size={15} aria-hidden="true" />
-          </a>
-        ) : (
-          !project.github && !project.slug && (
-            <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground/70">
-              <Lock size={14} aria-hidden="true" />
-              <span className="label-mono">Private</span>
-            </span>
-          )
+        {!project.slug && !project.demo && !project.github && (
+          <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground/70">
+            <Lock size={14} aria-hidden="true" />
+            <span className="label-mono">Private</span>
+          </span>
         )}
       </div>
     </motion.article>

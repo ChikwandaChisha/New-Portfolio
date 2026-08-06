@@ -141,6 +141,7 @@ const CONTENT: Record<string, ProjectContent> = {
       { label: 'Access', value: 'RBAC + RLS' },
     ],
     github: 'https://github.com/ChikwandaChisha/CryptNote',
+    demo: 'https://crypt-note-rust.vercel.app/',
     blocks: [
       {
         kind: 'prose',
