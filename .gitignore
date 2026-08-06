@@ -1,2 +1,14 @@
 # Claude Code local tooling — never track
 .claude/
+
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+
+# Local environment files
+.env*.local
+
+# Logs
+*.log
