@@ -49,17 +49,17 @@ export function Hero() {
               holds up under scrutiny. I love to think, code, and cook.
             </motion.p>
 
-            <motion.div variants={item} className="mt-9 flex flex-col min-[400px]:flex-row items-stretch min-[400px]:items-center gap-3">
+            <motion.div variants={item} className="mt-9 flex items-center gap-3">
               <button
                 onClick={() => smoothScrollTo('#projects', 800, 72)}
-                className="group inline-flex items-center justify-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-sm bg-accent text-accent-foreground text-xs sm:text-sm font-semibold transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-[0_6px_24px_-8px_hsl(33_66%_50%/0.6)] w-full min-[400px]:w-auto"
+                className="group inline-flex items-center justify-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-sm bg-accent text-accent-foreground text-xs sm:text-sm font-semibold transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-[0_6px_24px_-8px_hsl(33_66%_50%/0.6)] flex-1 min-w-0"
               >
                 View work
                 <ArrowUpRight size={17} className="transition-transform duration-200 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]" aria-hidden="true" />
               </button>
               <button
                 onClick={() => smoothScrollTo('#contact', 800, 72)}
-                className="inline-flex items-center justify-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-sm border border-border text-foreground text-xs sm:text-sm font-medium transition-colors duration-200 hover:border-accent hover:bg-accent/5 w-full min-[400px]:w-auto"
+                className="inline-flex items-center justify-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-sm border border-border text-foreground text-xs sm:text-sm font-medium transition-colors duration-200 hover:border-accent hover:bg-accent/5 flex-1 min-w-0"
               >
                 Get in touch
               </button>
