@@ -34,6 +34,15 @@ export function Navigation() {
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
     // The observed sections only exist on the home view, and React remounts them
     // as fresh nodes after a round-trip to a detail page — so re-attach per route.
     if (route.name !== 'home') return;
@@ -72,13 +81,13 @@ export function Navigation() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         aria-label="Main navigation"
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        className={`site-header fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
           isScrolled
             ? 'bg-background/85 backdrop-blur-md border-b border-border'
             : 'bg-transparent border-b border-transparent'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+        <div className="page-gutter max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
           <a
             href="#"
             onClick={scrollTop}
@@ -93,8 +102,8 @@ export function Navigation() {
             </span>
           </a>
 
-          <div className="flex items-center gap-3 md:gap-6">
-            <nav className="hidden md:flex items-center gap-8" aria-label="Sections">
+          <div className="flex items-center gap-3 lg:gap-6">
+            <nav className="hidden lg:flex items-center gap-8" aria-label="Sections">
               {navLinks.map((link) => {
                 const active = activeSection === link.href.slice(1);
                 return (
@@ -122,7 +131,7 @@ export function Navigation() {
               onClick={() => setIsMobileMenuOpen((v) => !v)}
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
-              className="md:hidden flex h-9 w-9 items-center justify-center border border-border text-foreground transition-colors hover:border-accent hover:text-accent"
+              className="lg:hidden flex h-11 w-11 items-center justify-center border border-border text-foreground transition-colors hover:border-accent hover:text-accent"
             >
               {isMobileMenuOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
             </button>
@@ -139,18 +148,18 @@ export function Navigation() {
             transition={{ duration: 0.2 }}
             role="dialog"
             aria-label="Navigation menu"
-            className="fixed inset-0 z-40 bg-background md:hidden"
+            className="fixed inset-0 z-40 bg-background lg:hidden"
           >
             <nav
               aria-label="Mobile navigation"
-              className="flex flex-col justify-center h-full px-8 gap-1"
+              className="page-gutter flex flex-col justify-center h-full px-8 gap-1"
             >
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="flex items-baseline gap-4 py-3 border-b border-border text-foreground hover:text-accent transition-colors"
+                  className="flex items-baseline gap-4 py-4 border-b border-border text-foreground hover:text-accent transition-colors"
                 >
                   <span className="label-mono text-muted-foreground/70">{link.index}</span>
                   <span className="text-3xl font-medium tracking-tight">{link.name}</span>

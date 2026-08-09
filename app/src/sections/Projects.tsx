@@ -86,11 +86,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       transition={{ duration: 0.2, ease: 'easeOut' }}
       className="group relative flex flex-col h-full border border-border rounded-sm bg-card/40 p-6 sm:p-7 transition-colors duration-200 hover:border-accent/50"
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between gap-4">
         <span className="label-mono text-muted-foreground/70">
           {String(index + 1).padStart(2, '0')}
         </span>
-        <span className="label-mono text-muted-foreground">{project.category}</span>
+        <span className="label-mono text-muted-foreground text-right">{project.category}</span>
       </div>
 
       <h3 className="mt-5 text-xl sm:text-2xl font-semibold tracking-tight text-foreground transition-colors duration-200 group-hover:text-accent">
@@ -120,7 +120,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         ))}
       </div>
 
-      <div className="mt-6 pt-5 border-t border-border flex items-center gap-5 relative z-10">
+      <div className="mt-6 pt-5 border-t border-border flex flex-wrap items-center gap-x-5 gap-y-3 relative z-10">
         {project.slug && (
           <a
             href={`#/project/${project.slug}`}

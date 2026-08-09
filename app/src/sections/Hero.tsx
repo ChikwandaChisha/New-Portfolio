@@ -20,8 +20,8 @@ const meta = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-20">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 w-full">
+    <section className="relative min-h-[100svh] flex items-center pt-28 pb-24 sm:pb-20">
+      <div className="page-gutter max-w-6xl mx-auto px-5 sm:px-8 w-full">
         <motion.div
           variants={container}
           initial="hidden"
@@ -36,7 +36,7 @@ export function Hero() {
 
             <motion.h1
               variants={item}
-              className="text-[2.75rem] leading-[1.02] sm:text-6xl lg:text-7xl font-semibold tracking-tightest text-foreground"
+              className="text-[clamp(2.5rem,11vw,4rem)] leading-[1.02] sm:text-6xl lg:text-7xl font-semibold tracking-tightest text-foreground"
             >
               Chikwanda Chisha
             </motion.h1>
@@ -52,14 +52,14 @@ export function Hero() {
             <motion.div variants={item} className="mt-9 flex flex-col min-[400px]:flex-row items-stretch min-[400px]:items-center gap-3">
               <button
                 onClick={() => smoothScrollTo('#projects', 800, 72)}
-                className="group inline-flex items-center justify-center gap-2 h-12 px-6 rounded-sm bg-accent text-accent-foreground text-sm font-semibold transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-[0_6px_24px_-8px_hsl(33_66%_50%/0.6)] w-full min-[400px]:w-auto"
+                className="group inline-flex items-center justify-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-sm bg-accent text-accent-foreground text-xs sm:text-sm font-semibold transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-[0_6px_24px_-8px_hsl(33_66%_50%/0.6)] w-full min-[400px]:w-auto"
               >
                 View work
                 <ArrowUpRight size={17} className="transition-transform duration-200 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]" aria-hidden="true" />
               </button>
               <button
                 onClick={() => smoothScrollTo('#contact', 800, 72)}
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-sm border border-border text-foreground text-sm font-medium transition-colors duration-200 hover:border-accent hover:bg-accent/5 w-full min-[400px]:w-auto"
+                className="inline-flex items-center justify-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-sm border border-border text-foreground text-xs sm:text-sm font-medium transition-colors duration-200 hover:border-accent hover:bg-accent/5 w-full min-[400px]:w-auto"
               >
                 Get in touch
               </button>
@@ -67,7 +67,7 @@ export function Hero() {
 
             <motion.div variants={item} className="mt-8 flex items-center gap-5">
               {[
-                { href: 'https://github.com/chikwanda', icon: Github, label: 'GitHub' },
+                { href: 'https://github.com/ChikwandaChisha', icon: Github, label: 'GitHub' },
                 { href: 'https://www.linkedin.com/in/chikwanda-chisha', icon: Linkedin, label: 'LinkedIn' },
               ].map((s) => (
                 <a
@@ -101,7 +101,7 @@ export function Hero() {
           e.preventDefault();
           smoothScrollTo('#about', 800, 72);
         }}
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 inline-flex flex-col items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+        className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 inline-flex flex-col items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
         aria-label="Scroll to About"
       >
         <span className="label-mono">Scroll</span>

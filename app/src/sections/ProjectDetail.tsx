@@ -606,13 +606,13 @@ export function ProjectDetail({ slug }: { slug: string }) {
         </dl>
 
         {(content.demo || content.github) && (
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-col min-[400px]:flex-row gap-3">
             {content.demo && (
               <a
                 href={content.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-sm bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition hover:brightness-110"
+                className="group inline-flex items-center justify-center gap-2 rounded-sm bg-accent h-9 sm:h-10 px-3.5 sm:px-4 text-xs sm:text-sm font-medium text-accent-foreground transition hover:brightness-110 w-full min-[400px]:w-auto"
               >
                 <span>Visit site</span>
                 <ArrowUpRight size={15} aria-hidden="true" />
@@ -623,7 +623,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
                 href={content.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 border border-border rounded-sm px-4 py-2 text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
+                className="group inline-flex items-center justify-center gap-2 border border-border rounded-sm h-9 sm:h-10 px-3.5 sm:px-4 text-xs sm:text-sm text-foreground transition-colors hover:border-accent hover:text-accent w-full min-[400px]:w-auto"
               >
                 <Github size={16} aria-hidden="true" />
                 <span>View source on GitHub</span>
@@ -736,7 +736,7 @@ function BlockView({ block }: { block: Block }) {
               block.intro ? 'mt-5' : ''
             }`}
           >
-            <pre className="p-5 text-[13px] leading-relaxed font-mono text-foreground">
+            <pre className="p-5 text-xs sm:text-[13px] leading-relaxed font-mono text-foreground">
               <code>{block.code}</code>
             </pre>
           </div>
@@ -758,7 +758,7 @@ function BlockView({ block }: { block: Block }) {
                   {block.columns.map((c) => (
                     <th
                       key={c}
-                      className="label-mono text-muted-foreground/70 font-normal text-left px-4 py-3 whitespace-nowrap"
+                      className="label-mono text-muted-foreground/70 font-normal text-left px-3 sm:px-4 py-3 whitespace-nowrap"
                     >
                       {c}
                     </th>
@@ -771,7 +771,7 @@ function BlockView({ block }: { block: Block }) {
                     {row.map((cell, ci) => (
                       <td
                         key={ci}
-                        className={`px-4 py-3 align-top ${
+                        className={`px-3 sm:px-4 py-3 align-top ${
                           ci === 0
                             ? 'text-foreground font-medium'
                             : block.monoCols?.includes(ci)

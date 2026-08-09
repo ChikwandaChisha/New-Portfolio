@@ -54,6 +54,10 @@
 }
 
 @layer base {
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+
   * {
     @apply border-border;
   }
@@ -62,6 +66,8 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
     font-feature-settings: 'ss01', 'ss02';
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Tabular figures for anything monospaced (dates, indices) */
@@ -72,6 +78,18 @@
   ::selection {
     background: hsl(var(--accent) / 0.25);
     color: hsl(var(--foreground));
+  }
+}
+
+/* Keep fixed UI clear of device cutouts and make narrow screens more forgiving. */
+@media (max-width: 639px) {
+  .site-header {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .page-gutter {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
   }
 }
 

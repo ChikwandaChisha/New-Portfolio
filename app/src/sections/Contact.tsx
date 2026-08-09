@@ -7,7 +7,7 @@ const EMAIL = 'chikwanda.chisha@dartmouth.edu';
 const channels = [
   { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
   { label: 'LinkedIn', value: '/in/chikwanda-chisha', href: 'https://www.linkedin.com/in/chikwanda-chisha' },
-  { label: 'GitHub', value: '@chikwanda', href: 'https://github.com/chikwanda' },
+  { label: 'GitHub', value: '@ChikwandaChisha', href: 'https://github.com/ChikwandaChisha' },
 ];
 
 export function Contact() {
@@ -30,7 +30,7 @@ export function Contact() {
 
             <a
               href={`mailto:${EMAIL}`}
-              className="group mt-8 inline-flex items-center gap-2.5 h-12 px-6 rounded-sm bg-accent text-accent-foreground text-sm font-semibold transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-[0_6px_24px_-8px_hsl(33_66%_50%/0.6)]"
+              className="group mt-8 inline-flex items-center justify-center gap-2.5 h-10 sm:h-12 px-4 sm:px-6 rounded-sm bg-accent text-accent-foreground text-xs sm:text-sm font-semibold transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-[0_6px_24px_-8px_hsl(33_66%_50%/0.6)] w-full sm:w-auto"
             >
               <Mail size={17} aria-hidden="true" />
               Email me
@@ -49,7 +49,7 @@ export function Contact() {
                   className="group flex items-center justify-between gap-4 py-4 border-b border-border transition-colors hover:bg-accent/5 -mx-3 px-3"
                 >
                   <span className="label-mono text-muted-foreground">{c.label}</span>
-                  <span className="flex items-center gap-2 text-sm text-foreground group-hover:text-accent transition-colors">
+                  <span className="flex min-w-0 items-center gap-2 text-sm text-foreground group-hover:text-accent transition-colors">
                     <span className="font-mono text-[13px] truncate">{c.value}</span>
                     <ArrowUpRight size={15} className="shrink-0 text-muted-foreground group-hover:text-accent transition-colors" aria-hidden="true" />
                   </span>
