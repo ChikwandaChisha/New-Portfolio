@@ -596,7 +596,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{content.summary}</p>
 
         {/* Meta */}
-        <dl className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-px border border-border rounded-sm bg-border overflow-hidden">
+        <dl className="mt-8 grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-4 gap-px border border-border rounded-sm bg-border overflow-hidden">
           {content.meta.map((m) => (
             <div key={m.label} className="bg-card px-4 py-3">
               <dt className="label-mono text-muted-foreground/70">{m.label}</dt>
