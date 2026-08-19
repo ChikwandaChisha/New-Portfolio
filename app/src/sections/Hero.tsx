@@ -13,7 +13,7 @@ const item: Variants = {
 };
 
 const meta = [
-  { label: 'Focus', value: 'AI · Security · Systems' },
+  { label: 'Focus', value: 'Software Engineering · AI · Security' },
   { label: 'Education', value: "Dartmouth College, CS '26" },
   { label: 'Latest', value: 'Arbitra' },
 ];

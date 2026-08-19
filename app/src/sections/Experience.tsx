@@ -47,7 +47,7 @@ const skills = {
   ],
   Backend: [
     { name: 'Python', level: 'Advanced' },
-    { name: 'Java', level: 'Advanced' },
+    { name: 'Java', level: 'Intermediate' },
     { name: 'C / C++', level: 'Intermediate' },
     { name: 'Node.js', level: 'Intermediate' },
     { name: 'SQL / Supabase', level: 'Intermediate' },

@@ -4,7 +4,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 const awards = [
   'Dartmouth Honor List',
   'EE Just STEM Fellow',
-  '$13k EE Just Research Fund',
+  'EE Just Research Fund',
   'First Quantum Mine Scholarship',
 ];
 
@@ -15,7 +15,6 @@ const coursework = [
   'Game Theory',
   'Privacy & Cyber Security',
   'Data Structures & Algorithms',
-  'Distributed Systems',
 ];
 
 export function About() {
