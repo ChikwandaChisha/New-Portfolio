@@ -7,7 +7,7 @@ const experiences = [
     role: 'Security Emerging Leader',
     period: 'Jul – Aug 2025',
     description:
-      'Selected for a leadership program on cloud security, threat intelligence, and secure software development.',
+      'Built cloud-security and threat-intelligence expertise through a Microsoft leadership program focused on secure software development.',
     skills: ['Security', 'Cloud', 'Leadership'],
   },
   {
@@ -23,26 +23,34 @@ const experiences = [
     role: 'AI Project Assistant',
     period: 'May – Aug 2025',
     description:
-      'Contributed to an AI mental-health chatbot serving 4,000+ students, focusing on data safety and model robustness.',
+      'Strengthened data safety and model robustness for an AI mental-health chatbot serving 4,000+ students.',
     skills: ['AI/ML', 'Data Annotation', 'Healthcare'],
   },
   {
     company: 'EE Just Research Program',
-    role: 'Research Intern',
+    role: 'Undergraduate Research Intern',
     period: 'May – Aug 2023',
     description:
       'Developed the StarBlocks soft-robotics system; published in IEEE Robotics and Automation Letters.',
     skills: ['Robotics', 'Python', 'Deep Learning'],
   },
+  {
+    company: 'Dartmouth College',
+    role: 'Computer Science TA & Tutor',
+    period: 'Jan – Jun 2023',
+    description:
+      'Tutored students in Calculus and Data Structures & Algorithms in Java, raising grades by an average of one full letter grade while debugging and optimizing 400+ lines of student code.',
+    skills: ['Java', 'Teaching', 'Data Structures'],
+  },
 ];
 
 const skills = {
   Frontend: [
-    { name: 'React.js', level: 'Advanced' },
+    { name: 'React.js', level: 'Intermediate' },
     { name: 'React Native', level: 'Intermediate' },
     { name: 'TypeScript', level: 'Intermediate' },
-    { name: 'Tailwind CSS', level: 'Advanced' },
-    { name: 'JavaScript', level: 'Advanced' },
+    { name: 'Tailwind CSS', level: 'Intermediate' },
+    { name: 'JavaScript', level: 'Intermediate' },
     { name: 'HTML / CSS', level: 'Advanced' },
   ],
   Backend: [

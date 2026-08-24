@@ -14,8 +14,9 @@ const item: Variants = {
 
 const meta = [
   { label: 'Focus', value: 'SWE · AI · Security' },
-  { label: 'Education', value: "Dartmouth College, CS '26" },
+  { label: 'Education', value: "Dartmouth College, CS"},
   { label: 'Latest', value: 'Arbitra' },
+  { label: 'Available', value: 'Summer/Fall 2026 · Full-time' },
 ];
 
 export function Hero() {
@@ -45,7 +46,7 @@ export function Hero() {
               variants={item}
               className="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-muted-foreground"
             >
-              I design and build software across AI, security, and systems. I love to play sudoku, code, and cook.
+              I design and build software across AI, security, and systems. I love to play chess, sudoku, and stay active outside of code.
             </motion.p>
 
             <motion.div variants={item} className="mt-9 flex items-center gap-3">

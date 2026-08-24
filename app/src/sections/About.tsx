@@ -41,13 +41,11 @@ export function About() {
               <div className="space-y-5 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-2xl">
                 <p>
                   I'm a computer science student at Dartmouth working at the intersection of
-                  AI, security, and systems. My work spans published robotics research, an AI
-                  mental-health chatbot serving thousands of students, and secure platform
-                  engineering.
+                  AI and security.
                 </p>
                 <p>
                   I care about software that's precise, reliable, and genuinely useful. Outside
-                  the terminal, you'll usually find me cooking.
+                  the terminal, you'll usually find me playing chess, sudoku, or working out.
                 </p>
               </div>
             </ScrollReveal>
