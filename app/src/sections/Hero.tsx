@@ -46,7 +46,7 @@ export function Hero() {
               variants={item}
               className="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-muted-foreground"
             >
-              I design and build software across AI, security, and systems. I love to play chess, sudoku, and stay active outside of code.
+              I design and build software across AI, security, and systems. I love to play chess, sudoku, and workout.
             </motion.p>
 
             <motion.div variants={item} className="mt-9 flex items-center gap-3">
