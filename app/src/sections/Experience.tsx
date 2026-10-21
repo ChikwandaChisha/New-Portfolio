@@ -27,6 +27,14 @@ const experiences = [
     skills: ['AI/ML', 'Data Annotation', 'Healthcare'],
   },
   {
+    company: 'Headstarter',
+    role: 'Software Engineering Resident',
+    period: 'Nov 2024 – Mar 2025',
+    description:
+      'Built and shipped full-stack AI applications in weekly sprints alongside a cohort of engineers, with code reviews and mentorship from industry engineers.',
+    skills: ['Full-Stack', 'AI', 'React'],
+  },
+  {
     company: 'EE Just Research Program',
     role: 'Undergraduate Research Intern',
     period: 'May – Aug 2023',
