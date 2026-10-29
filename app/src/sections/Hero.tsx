@@ -1,5 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
-import { ArrowUpRight, ArrowDown, Linkedin, Github } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, Linkedin, Github, Twitter } from 'lucide-react';
 import { smoothScrollTo } from '@/utils/smoothScroll';
 
 const container: Variants = {
@@ -69,6 +69,7 @@ export function Hero() {
               {[
                 { href: 'https://github.com/ChikwandaChisha', icon: Github, label: 'GitHub' },
                 { href: 'https://www.linkedin.com/in/chikwanda-chisha', icon: Linkedin, label: 'LinkedIn' },
+                { href: 'https://x.com/ChishaIsha', icon: Twitter, label: 'X' },
               ].map((s) => (
                 <a
                   key={s.label}

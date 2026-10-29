@@ -8,6 +8,7 @@ const channels = [
   { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
   { label: 'LinkedIn', value: '/in/chikwanda-chisha', href: 'https://www.linkedin.com/in/chikwanda-chisha' },
   { label: 'GitHub', value: '@ChikwandaChisha', href: 'https://github.com/ChikwandaChisha' },
+  { label: 'X', value: '@ChishaIsha', href: 'https://x.com/ChishaIsha' },
 ];
 
 export function Contact() {
