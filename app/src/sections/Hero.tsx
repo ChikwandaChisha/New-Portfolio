@@ -1,6 +1,14 @@
 import { motion, type Variants } from 'framer-motion';
-import { ArrowUpRight, ArrowDown, Linkedin, Github, Twitter } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, Linkedin, Github } from 'lucide-react';
 import { smoothScrollTo } from '@/utils/smoothScroll';
+
+function XLogo({ size = 17, ...props }: { size?: number; 'aria-hidden'?: boolean }) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" {...props}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -69,7 +77,7 @@ export function Hero() {
               {[
                 { href: 'https://github.com/ChikwandaChisha', icon: Github, label: 'GitHub' },
                 { href: 'https://www.linkedin.com/in/chikwanda-chisha', icon: Linkedin, label: 'LinkedIn' },
-                { href: 'https://x.com/ChishaIsha', icon: Twitter, label: 'X' },
+                { href: 'https://x.com/ChishaIsha', icon: XLogo, label: 'X' },
               ].map((s) => (
                 <a
                   key={s.label}
